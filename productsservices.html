@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products and services</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">Binfinity</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="newdashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Welcome to Binfinity</h1>
+            <p>Your trusted partner in medical sanitation solutions.</p>
+            <a href="#products" class="cta-button">Explore Products</a>
+        </div>
+    </section>
+
+    <section class="section" id="products">
+        <h2>Our Products</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="uvc trolley.jpg" alt="UV-C Sanitation Trolley">
+                <h3>UV-C Sanitation Chamber</h3>
+                <p>Advanced sanitation trolley using UV-C technology for efficient disinfection.</p>
+                <button class="learn-more" data-modal="modal-uvc">Learn More</button>
+            </div>
+            <div class="card">
+                <img src="iot waste management.jpg" alt="IoT-Driven Waste Management">
+                <h3>IoT-Driven Waste Management</h3>
+                <p>Real-time waste tracking and management system with IoT integration.</p>
+                <button class="learn-more" data-modal="modal-iot">Learn More</button>
+            </div>
+            <div class="card">
+                <img src="AI powered .jpg" alt="AI-Powered Medical Instrument Sanitation">
+                <h3>AI-Powered Medical Instrument Sanitation</h3>
+                <p>Utilizing AI for optimal sanitization of medical instruments.</p>
+                <button class="learn-more" data-modal="modal-ai">Learn More</button>
+            </div>
+            <div class="card">
+                <img src="realtime2.jpg" alt="Real-Time Monitoring">
+                <h3>Real-Time Monitoring</h3>
+                <p>Continuous monitoring of sanitation levels for enhanced safety.</p>
+                <button class="learn-more" data-modal="modal-monitoring">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2>Our Services</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="consultation.jpg" alt="Consultation Services">
+                <h3>Consultation Services</h3>
+                <p>Expert consultation for sanitation strategies tailored to your facility.</p>
+                <button class="learn-more" data-modal="modal-consultation">Learn More</button>
+            </div>
+            <div class="card">
+                <img src="training programs.jpg" alt="Training Programs">
+                <h3>Training Programs</h3>
+                <p>Comprehensive training programs for staff on sanitation best practices.</p>
+                <button class="learn-more" data-modal="modal-training">Learn More</button>
+            </div>
+            <div class="card">
+                <img src="maintenance.jpg" alt="Maintenance Support">
+                <h3>Maintenance Support</h3>
+                <p>Ongoing maintenance and support for all sanitation equipment.</p>
+                <button class="learn-more" data-modal="modal-maintenance">Learn More</button>
+            </div>
+            <div class="card">
+                <img src="emergency.jpg" alt="Emergency Response">
+                <h3>Emergency Response</h3>
+                <p>Rapid response services for sanitation emergencies and outbreaks.</p>
+                <button class="learn-more" data-modal="modal-emergency">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="section" id="about">
+        <h2>About Us</h2>
+        <p>At Binfinity, we are committed to providing the highest quality sanitation solutions to ensure the safety and well-being of patients and healthcare professionals alike. With a focus on innovation and efficiency, our products and services are designed to meet the ever-evolving challenges in medical sanitation.</p>
+        <p>Our team consists of experts in the field who are dedicated to improving sanitation practices and implementing the latest technologies. We believe that through effective sanitation, we can significantly reduce the risk of infections and promote a healthier environment.</p>
+    </section>
+
+
+    <section class="section" id="contact">
+        <h2>Contact Us</h2>
+        <form action="" name="contact-us">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    
+        <div id="popup" class="popup">Your message has been sent successfully!</div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 Binfinity. All Rights Reserved.</p>
+    </footer>
+
+    <button class="back-to-top" id="backToTop">Back to Top</button>
+
+    <!-- Modals -->
+    <div id="modal-uvc" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>UV-C Sanitation Chamber</h3>
+            <p>The UV-C Sanitation Chamber utilizes advanced UV-C light technology to eliminate up to 99.9% of harmful pathogens on surfaces. It's designed for easy maneuverability in healthcare settings.</p>
+            <ul>
+                <li>Features:</li>
+                <li>UV-C light with a wavelength of 254 nm</li>
+                <li>Portable and easy to operate</li>
+                <li>Built-in safety features</li>
+                <li>Rechargeable battery for extended use</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-iot" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>IoT-Driven Waste Management</h3>
+            <p>Our IoT-Driven Waste Management system provides real-time data on waste levels and types, enabling efficient disposal and management. This system enhances sustainability in medical facilities.</p>
+            <ul>
+                <li>Features:</li>
+                <li>Real-time tracking of waste bins</li>
+                <li>Automated alerts for waste collection</li>
+                <li>Data analytics for better waste management decisions</li>
+                <li>Integration with existing hospital management systems</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-ai" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>AI-Powered Medical Instrument Sanitation</h3>
+            <p>This solution utilizes artificial intelligence to ensure optimal cleaning and sterilization of medical instruments. It adapts to various types of instruments and guarantees high standards of hygiene.</p>
+            <ul>
+                <li>Features:</li>
+                <li>AI-driven sanitization protocols</li>
+                <li>Compatibility with a wide range of instruments</li>
+                <li>Real-time monitoring and reporting</li>
+                <li>Automated scheduling for cleaning processes</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-monitoring" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Real-Time Monitoring</h3>
+            <p>Our Real-Time Monitoring solution continuously checks sanitation levels and alerts staff when thresholds are exceeded, ensuring a safe environment for patients and healthcare professionals.</p>
+            <ul>
+                <li>Features:</li>
+                <li>Continuous monitoring of air and surface sanitation levels</li>
+                <li>Automated alerts for immediate action</li>
+                <li>Data logging for compliance reporting</li>
+                <li>Intuitive dashboard for easy access to data</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-consultation" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Consultation Services</h3>
+            <p>Our expert consultants provide tailored strategies for effective sanitation in your facility, ensuring compliance with health regulations and industry best practices.</p>
+            <ul>
+                <li>Features:</li>
+                <li>On-site assessment of sanitation practices</li>
+                <li>Customized sanitation plans</li>
+                <li>Regulatory compliance support</li>
+                <li>Implementation guidance and training</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-training" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Training Programs</h3>
+            <p>Our comprehensive training programs equip your staff with the knowledge and skills necessary for effective sanitation practices, ensuring a safe environment for everyone.</p>
+            <ul>
+                <li>Features:</li>
+                <li>Hands-on training sessions</li>
+                <li>Customizable training modules</li>
+                <li>Certification upon completion</li>
+                <li>Access to online resources and support</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-maintenance" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Maintenance Support</h3>
+            <p>We provide ongoing maintenance and support for all sanitation equipment, ensuring optimal performance and compliance with safety standards.</p>
+            <ul>
+                <li>Features:</li>
+                <li>Regular maintenance checks</li>
+                <li>24/7 customer support</li>
+                <li>Emergency repair services</li>
+                <li>Replacement parts and upgrades available</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="modal-emergency" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Emergency Response</h3>
+            <p>Our rapid response services are designed to address sanitation emergencies promptly, helping to control outbreaks and ensure safety in your facility.</p>
+            <ul>
+                <li>Features:</li>
+                <li>Immediate deployment of sanitation teams</li>
+                <li>Assessment and containment strategies</li>
+                <li>Post-incident evaluations</li>
+                <li>Support for restoring normal operations</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const modals = document.querySelectorAll(".modal");
+            const learnMoreButtons = document.querySelectorAll(".learn-more");
+            const closeButtons = document.querySelectorAll(".close");
+
+            learnMoreButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const modalId = button.getAttribute("data-modal");
+                    const modal = document.getElementById(modalId);
+                    modal.style.display = "block";
+                });
+            });
+
+            closeButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const modal = button.closest(".modal");
+                    modal.style.display = "none";
+                });
+            });
+
+            window.addEventListener("click", (event) => {
+                if (event.target.classList.contains("modal")) {
+                    event.target.style.display = "none";
+                }
+            });
+        });
+
+        // Scroll to top button functionality
+        const backToTopButton = document.getElementById("backToTop");
+        backToTopButton.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.onscroll = () => {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx9USuys0hjiopdShcXs_u6dV37e57h6PjkKto5rxf9h_5YWdHrsHhxBLdLEofFUWSZ/exec';
+        const form = document.forms['contact-us'];
+        const popup = document.getElementById('popup');
+    
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    form.reset();
+                    popup.classList.add('show');
+                    setTimeout(() => {
+                        popup.classList.remove('show');
+                    }, 3000); // Popup will disappear after 3 seconds
+                })
+                .catch(error => console.error('Error!', error.message));
+        });
+    </script>
+    
+</body>
+
+</html>
+
+<style>
+    <style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #e0f7fa;
+    color: #333;
+}
+
+header {
+    background-color: #0077b6;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffcdd2;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35vh;
+    text-align: center;
+    background: linear-gradient(to right, #0077b6, #e0f6ff);
+    color: white;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.cta-button {
+    background-color: white;
+    color: #333;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #e0f6ff;
+}
+
+.section {
+    padding: 60px 20px;
+}
+
+/* About Us Section Box */
+#about {
+    background-color: white; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    padding: 40px; 
+    margin: 20px auto; 
+    max-width: 800px; 
+    position: relative; 
+}
+
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4caf50; /* Green background */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure it appears above everything */
+
+}
+
+.popup.show {
+    display: block;
+}
+
+#about h2 {
+    text-align: center; 
+    color: #0077b6; 
+    margin-bottom: 20px; 
+}
+
+#about p {
+    line-height: 1.6; 
+    margin-bottom: 15px; 
+    
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0077b6;
+    font-size: 2em;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.card h3 {
+    color: #0077b6;
+    margin: 15px 0;
+}
+
+.learn-more {
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.learn-more:hover {
+    background-color: #005f8a;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #005f8a;
+}
+
+footer {
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    cursor: pointer;
+    display: none;
+    transition: background-color 0.3s;
+}
+
+.back-to-top:hover {
+    background-color: #005f8a;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; 
+    padding: 20px; 
+    border: 1px solid #888; 
+    width: 80%; 
+    max-width: 600px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa; 
+    float: right;
+    font-size: 28px; 
+    font-weight: bold; 
+}
+
+.close:hover,
+.close:focus {
+    color: black; 
+    text-decoration: none; 
+    cursor: pointer; 
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.modal p {
+    line-height: 1.6; 
+}
+
+</style>

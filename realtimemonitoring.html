@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Monitoring Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    
+
+</head>
+<body>
+   
+    <div class="container">
+        <header>
+            <h1 class="logo"> <i class="fas fa-chart-home"></i> Monitoring Dashboard</h1>
+            <div class="date">Current Date: <span id="current-date"></span></div>
+            <div class="nav-links">
+                <a href="newdashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </div>
+        </header>
+        
+        <section class="dashboard">
+            <div class="charts">
+                <canvas id="binLevelChart"  height="400"></canvas>
+                <canvas id="sterilizationChart" height="400"></canvas>
+            </div>
+
+            <div class="overview">
+                <center>
+                <h2>Overview</h2> </center>
+                <div class="stats">
+                    <div class="stat">
+                        <h3>Sanitation</h3>
+                        <p class="count">5 Pending</p>
+                    </div>
+                    <div class="stat2">
+                        <h3>Waste</h3>
+                        <p class="count">3 Full</p>
+                    </div>
+                    <div class="stat">
+                        <h3>Medication</h3>
+                        <p class="count">2 Expired</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="notifications">
+            <h2>Notifications</h2>
+            <ul>
+                <li class="alert">Bin #2 needs emptying.</li>
+                <li class="alert">Medicine #101 is near expiry.</li>
+                <li class="alert">Sterilization Cycle delayed.</li>
+            </ul>
+        </section>
+
+        <section class="settings">
+            <center><h2>Settings</h2></center>
+            <div class="settings-container">
+                <!-- Export Data Box -->
+                <div class="settings-box">
+                    <h3>Data Export</h3>
+                    <p>Click the button to export monitoring data to a CSV file.</p>
+                    <button class="btn" id="export-data">Export Data</button>
+                    <p id="export-response"></p> <!-- Export response message -->
+                </div>
+        
+                <!-- Theme Box -->
+                <div class="settings-box">
+                    <h3>Theme</h3>
+                    <p>Select your preferred dashboard theme.</p>
+                    <button class="btn" id="theme-selector">Change Theme</button>
+                    <p id="theme-response"></p> <!-- Theme response message -->
+                </div>
+        
+                <!-- Help Box -->
+                <div class="settings-box">
+                    <h3>Help</h3>
+                    <p>Access the user manual and support documentation below.</p>
+                    <button class="btn" id="help-button">Help</button>
+                    <p id="help-response"></p> <!-- Help response message -->
+                </div>
+            </div>
+        </section>
+        
+    
+        <section class="iot-science"> 
+            <center>
+            <h2>The Science Behind IoT</h2> </center>
+            <p>
+                The Internet of Things (IoT) integrates devices and systems to collect and exchange data. This application utilizes IoT sensors in waste bins and sterilization equipment to provide real-time monitoring. These sensors transmit data on fill levels and statuses to our dashboard, enhancing operational efficiency and enabling proactive decision-making based on real-time information.
+            </p>
+        </section>
+    </div>
+    <script>
+        
+    // Function to export CSV data
+    function exportToCSV() {
+        const data = [
+            ['Date', 'Bin Level', 'Sterilization Status', 'Medicine Usage'],
+            ['2024-10-01', '75%', 'Completed', '5mg - Used'],
+            ['2024-10-02', '55%', 'Pending', '10mg - Used'],
+            ['2024-10-03', '25%', 'Completed', 'No Usage'],
+            ['2024-10-04', '90%', 'In Progress', '20mg - Used']
+        ];
+
+        let csvContent = "data:text/csv;charset=utf-8,";
+        data.forEach(function(rowArray) {
+            let row = rowArray.join(",");
+            csvContent += row + "\r\n";
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "monitoring_data.csv");
+        document.body.appendChild(link); // Required for FF
+
+        link.click();
+    }
+
+    // Attach event listener to Export Data button
+    document.getElementById('export-data').addEventListener('click', function() {
+        exportToCSV();
+        const exportResponse = document.getElementById('export-response');
+        exportResponse.textContent = 'Your data has been exported successfully!';
+        alert('Exporting data...')
+        exportResponse.style.color = 'green';
+    });
+
+    // Theme selection popup
+    document.getElementById('theme-selector').addEventListener('click', function() {
+        alert('The theme feature is not implemented yet.');
+    });
+
+    // Help functionality
+    document.getElementById('help-button').addEventListener('click', function() {
+        const helpResponse = document.getElementById('help-response');
+        helpResponse.innerHTML = 'For assistance, please contact support at <a href="mailto:support@binfinity.com">support@binfinity.com</a>.';
+        helpResponse.style.color = 'blue';
+    });
+    </script>
+
+    <script>
+        // Current Date
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString();
+
+        // Example Chart Data
+        const ctx1 = document.getElementById('binLevelChart').getContext('2d');
+        const binLevelChart = new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['Bin 1', 'Bin 2', 'Bin 3'],
+                datasets: [{
+                    label: 'Waste Levels (%)',
+                    data: [60, 80, 30],
+                    backgroundColor: ['#4CAF50', '#FF9800', '#F44336'],
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Level (%)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Bins'
+                        }
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('sterilizationChart').getContext('2d');
+        const sterilizationChart = new Chart(ctx2, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Tasks Completed',
+                    data: [5, 10, 15, 20],
+                    borderColor: '#2196F3',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Tasks'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Weeks'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#e0f7fa;
+}
+
+.container {
+    max-width: 1200px; /* Set a max width for better readability */
+    width: 100%; /* Full width */
+    padding: 20px; /* Increased padding for spacing */
+    margin: auto;  /* Center the container */
+    background-color: #ffffff;
+    
+}
+
+header {
+    background: #0077b6;
+    color: white;
+    padding: 20px; /* Increased padding for header */
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.date {
+    font-size: 14px; /* Increased font size for visibility */
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.charts {
+    display: flex; /* Align charts side by side */
+    justify-content: space-between;
+    margin-bottom: 20px; /* Space between charts and overview */
+    background-color: #eaf6ff;
+}
+
+.charts canvas {
+    flex: 1; /* Each chart takes equal space */
+    margin: 0 10px; /* Increased margin between charts */
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: 200px; /* Set a specific height for better visibility */
+    
+}
+
+.overview {
+    background-color: #eaf6ff;
+    padding: 20px; /* Increased padding for overview */
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.overview h2 {
+    margin-top: 0;
+    font-size: 18px; /* Increased font size */
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+    background: linear-gradient(to right, #0077b6, #e0f6ff);2;
+    padding: 15px; /* Increased padding for stats */
+    border-radius: 6px;
+    flex: 1 1 30%; /* Each stat takes up to 30% of the width */
+    margin: 10px; /* Increased margin for stats */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat2 {
+    text-align: center;
+    background: linear-gradient(to right, #0077b6, #e0f6ff);;
+    padding: 15px; /* Increased padding for stats */
+    border-radius: 6px;
+    flex: 1 1 30%; /* Each stat takes up to 30% of the width */
+    margin: 10px; /* Increased margin for stats */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.count {
+    font-size: 20px; /* Increased font size */
+    font-weight: bold;
+    color: #333;
+}
+.header .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+          }
+
+
+.settings {
+    margin-top: 20px; /* Increased margin for sections */
+    background:linear-gradient(to right, #0077b6, #e0f6ff);;
+    padding: 20px; /* Increased padding for sections */
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.settings-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .settings-box {
+            background-color: #e0f6ff;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            margin: 10px;
+            text-align: center;
+        }
+        
+        .settings-box h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        
+        .settings-box p {
+            margin: 10px 0;
+        }
+        
+        .settings-box .btn {
+            background-color: white;
+            color: #0077b6;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .settings-box .btn:hover {
+            background-color: #e0f7fa;
+        }
+
+
+.notifications{
+    margin-top: 20px; /* Increased margin for sections */
+    background-color: #e0f6ff;
+    padding: 20px; /* Increased padding for sections */
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+}
+
+
+.notifications h2, .settings h2, .iot-science h2 {
+    margin-top: 0;
+    font-size: 18px; /* Increased font size */
+}
+
+.notifications ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notifications li {
+    padding: 10px; /* Increased padding for notifications */
+   
+    margin: 10px 0; /* Increased margin for notifications */
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.alert {
+    color: #d32f2f; /* Red for alert messages */
+}
+.settings-container{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:15px;
+}
+
+.settings-option {
+    flex:1;
+    margin-bottom: 10px;
+}
+.settings-option:last-child{
+    margin-right: 0;
+}
+.help-option{
+    text-align: center;
+}
+.nav-links {
+    display: inline-block;  
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #005f8c;
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.btn {
+    background-color: #0077b6;
+    color: white;
+    padding: 10px 15px; /* Increased padding for buttons */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* Increased font size */
+}
+
+.btn:hover {
+    background-color: #e0f6ff;
+}
+
+.iot-science {
+    margin-top: 20px; /* Increased margin for sections */
+    padding: 20px; /* Increased padding for sections */
+    border-radius: 6px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+ margin-top: 20px; /* Increased margin for IoT section */
+    background-color: #e0f6ff;
+}
+
+.iot-science p {
+    font-size: 16px; /* Increased font size */
+    line-height: 1.6; /* Increased line height for readability */
+}
+</style>

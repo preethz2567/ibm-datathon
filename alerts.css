@@ -1,0 +1,225 @@
+/* General Reset */
+body, h1, h2, h3, h4, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #f0f4f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background-color: #0077b6;
+    color: #fff;
+    text-align: center;
+    padding: 3rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header .logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.header .tagline {
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+
+/* Main Section Styling */
+.intro {
+    text-align: center;
+    margin: 3rem 0;
+    background: linear-gradient(to right, #0077b6, #e0f6ff);;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.intro .cta-button {
+    background-color: #0077b6;
+    color: #fff;
+    padding: 0.7rem 2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.intro .cta-button:hover {
+    background-color: #005f8a;
+}
+
+/* Alert Categories */
+.alert-categories {
+    background-color: #fff;
+    padding: 3rem 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.alert-categories h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.category {
+    background: #e0f7fa;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.category i {
+    font-size: 2.5rem;
+    color: #0077b6;
+    margin-bottom: 1rem;
+}
+
+.category h4 {
+    color: #0077b6;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+/* Alerts Timeline */
+.alerts-timeline {
+    margin: 3rem 0;
+}
+
+.alerts-timeline h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.timeline {
+    list-style: none;
+    padding: 0 1rem;
+}
+
+.alert-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.alert-card:hover {
+    transform: translateY(-5px);
+}
+
+.alert-card .timestamp {
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.alert-card .timestamp i {
+    margin-right: 0.5rem;
+    color: #0077b6;
+}
+
+/* Subscribe Section */
+.subscribe {
+    background: #0077b6;
+    padding: 3rem;
+    margin: 2rem 0;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.subscribe form {
+    display: inline-block;
+    text-align: left;
+    max-width: 400px;
+    width: 100%;
+}
+/* Popup styling */
+
+
+.popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s, visibility 0.5s;
+}
+
+.popup.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+
+.subscribe input,
+.subscribe select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.5rem;
+    border
+}
+.nav-links {
+    display: inline-block;  
+    gap: 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #005f8c;
+}

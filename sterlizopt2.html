@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Binfinity - Sterilisation Management Platform for tracking and monitoring sterilisation tasks and equipment replacements.">
+    <title>Binfinity - Sterilisation Management</title>
+
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Internal Styles -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #006ba6;
+            color: #fff;
+            padding: 1.5em 2em;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        header nav li {
+            margin: 0;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ffcdd2;
+            transform: scale(1.1);
+        }
+
+        header nav a.active {
+            font-weight: bold;
+            color: #ffcdd2;
+        }
+
+        main {
+            margin-top: 120px;
+            padding: 2em;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            grid-template-rows: auto auto auto;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Box Styling */
+        .box {
+            padding: 20px;
+            border-radius: 10px;
+            color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            background-color: #006ba6;
+        }
+
+        .box h2 {
+            margin-top: 0;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.4em;
+        }
+
+        /* Reports Section - Make it Larger */
+        #reports {
+            grid-column: span 2;
+            background: linear-gradient(to right, #0077b6, #e0f6ff);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chart-section {
+            background-color: #f4faff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60%;
+        }
+
+        .report-data {
+            width: 35%;
+            color:white;
+        }
+
+        .report-data h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        #reportChart {
+            width: 100%;
+            height: 250px;
+        }
+
+        /* Sterilisation Process Flow Section */
+        #sterilisation-process-flow {
+            grid-column: span 2;
+            background-color: #eaf6ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            
+        }
+        #sterilisation-process-flow h2{
+            color: #d9534f;
+        }
+
+        .flowchart-box {
+            background-color: #006ba6;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+
+        .vertical-arrow {
+            width: 3px;
+            height: 50px;
+            background-color: #006ba6;
+            margin: 10px 0;
+        }
+
+        /* Equipment Replacement Notifications Section */
+        #replacement-notifications {
+            background:linear-gradient(to right, #0077b6, #e0f6ff);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            grid-column: span 2;
+        }
+
+        #replacement-notifications ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: white;
+        }
+
+        #replacement-notifications ul li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        #replacement-notifications h2 {
+            color: white;
+        }
+
+        #replacement-notifications ul li i {
+            color: #d9534f;
+        }
+
+        /* Current Cycle Status - Reduced size */
+        #current-cycle-status {
+            background-color: #eaf6ff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 1200px;
+            grid-column: span 2;
+            color: #006ba6;
+          
+         
+          
+        }
+        #current-cycle-status h2 {
+            color: #FF5733;
+
+        .status-section {
+            flex: 1;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .status-section h3 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .status-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .header .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+          }
+        .status-section ul li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-section ul li i {
+            color: #d9534f;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo"><i class="fas fa-recycle"></i> Binfinity Sterilisation Management</h1>
+        <nav>
+            <ul>
+                <li><a href="newdashboard.html" aria-label="Go to Dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="ster1.html" class="active" aria-label="Go to Sterilisation page"><i class="fas fa-thermometer-half"></i> Sterilisation</a></li>
+                <li><a href="ster2.html" aria-label="Go to Reports page"><i class="fas fa-file-alt"></i> Reports</a></li>
+                <li><a href="#" aria-label="Settings"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Current Cycle Status Section -->
+            <section id="current-cycle-status" class="box">
+                <h2><i class="fas fa-circle-notch"></i> Current Cycle Status</h2>
+                <div class="grid">
+                    <div class="status-section">
+                        <h3><i class="fas fa-play-circle"></i> Ongoing Tasks</h3>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> Sterilisation Task 1 (due in 2 hours)</li>
+                            <li><i class="fas fa-clock"></i> Sterilisation Task 2 (due in 4 hours)</li>
+                        </ul>
+                    </div>
+                    <div class="status-section">
+                        <h3><i class="fas fa-flag-checkered"></i> Upcoming Tasks</h3>
+                        <ul>
+                            <li><i class="fas fa-clock"></i> Sterilisation Task 3 (due in 6 hours)</li>
+                            <li><i class="fas fa-clock"></i> Sterilisation Task 4 (due in 8 hours)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports" class="box">
+                <div class="report-data">
+                    <h3><i class="fas fa-chart-bar"></i> Reports Overview</h3>
+                    <p>This section provides a detailed overview of the sterilisation cycles and equipment usage. The graph below illustrates the sterilisation task completion trends over time.</p>
+                    <p><strong>Key Metrics:</strong></p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Total Tasks Completed: 120</li>
+                        <li><i class="fas fa-sync-alt"></i> Active Tasks: 18</li>
+                        <li><i class="fas fa-exclamation-circle"></i> Tasks Due Soon: 4</li>
+                    </ul>
+                </div>
+                <div class="chart-section">
+                    <canvas id="reportChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Sterilisation Process Flow Section -->
+            <section id="sterilisation-process-flow" class="box">
+                <h2><i class="fas fa-cogs"></i> Sterilisation Process Flow</h2>
+                <div class="flowchart-box">Start</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">Instrument Usage Detected</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">Send Data to AI Models (ML / Big Data)</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">AI Predicts Sterilisation Need</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">Activate UV-C</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">UV-C Light Sterilisation</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">Completion</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">Real-time Analysis in App (Sterilisation Status, Report)</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">Reuse Status (or Replacement)</div>
+                <span style="font-size: 75px; color:#0077b6;">&#8595;</span>
+                <div class="flowchart-box">End</div>
+            </section>
+            
+
+            <!-- Equipment Replacement Notifications Section -->
+            <section id="replacement-notifications" class="box">
+                <h2><i class="fas fa-exclamation-triangle"></i> Equipment Replacement Notifications</h2>
+                <ul>
+                    <li><i class="fas fa-exclamation-circle"></i> Sterilizer 1 needs maintenance (due in 3 days)</li>
+                    <li><i class="fas fa-exclamation-circle"></i> UV-C Light Replacement required (due in 5 days)</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Chart.js -->
+    <script>
+        const ctx = document.getElementById('reportChart').getContext('2d');
+        const reportChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Sterilisation Tasks Completed',
+                    data: [12, 25, 15, 30, 18, 20, 22],
+                    borderColor: 'rgba(0, 123, 255, 1)',
+                    backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                    fill: true,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binfinity - Timely Alerts</title>
+    <link rel="stylesheet" href="alerts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo"><i class="fas fa-recycle"></i> Binfinity</h1>
+            <p class="tagline">Timely Alerts for a Healthier Environment</p>
+            <div class="nav-links">
+                <a href="newdashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            </div>
+        </header>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <div class="container">
+                <h2>Stay Updated with Real-Time Alerts</h2>
+                <p>Get all critical updates for sanitation, medicine management, and waste management at your fingertips.</p>
+              
+            </div>
+        </section>
+
+        <section class="alert-categories">
+            <div class="container">
+                <h3>Alert Categories</h3>
+                <div class="category-grid">
+                    <div class="category">
+                        <i class="fas fa-broom"></i>
+                        <h4>Sanitation Tasks</h4>
+                        <p>Receive alerts for upcoming and ongoing sanitation tasks, including sterilization cycles and completion reports.</p>
+                    </div>
+                    <div class="category">
+                        <i class="fas fa-pills"></i>
+                        <h4>Medicine Management</h4>
+                        <p>Get reminders for medicine expiry dates, dosage instructions, and replacement suggestions.</p>
+                    </div>
+                    <div class="category">
+                        <i class="fas fa-trash-alt"></i>
+                        <h4>Waste Management</h4>
+                        <p>Stay informed about waste levels and manage maintenance tasks efficiently.</p>
+                    </div>
+                    <div class="category">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <h4>Critical Notifications</h4>
+                        <p>Priority alerts that need immediate action for a safer environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="alerts-timeline">
+            <div class="container">
+                <h3>Real-Time Alerts Timeline</h3>
+                <ul class="timeline">
+                    <li>
+                        <div class="alert-card">
+                            <p class="timestamp"><i class="fas fa-clock"></i> Oct 5, 2024 - 14:30</p>
+                            <h4>Sanitation Task Due</h4>
+                            <p>Upcoming sterilization required for Section A.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="alert-card">
+                            <p class="timestamp"><i class="fas fa-clock"></i> Oct 6, 2024 - 09:00</p>
+                            <h4>Medicine Expiry Alert</h4>
+                            <p>Medication X is expiring tomorrow. Please replace it.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Green popup for success message -->
+        <div id="subscribe-popup" class="popup hidden">
+            <p>Subscription successful!</p>
+        </div>
+
+        <section class="subscribe">
+            <div class="container">
+                <h3>Subscribe for Alerts</h3>
+                <form>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    <label for="alert-types">Select Alert Type:</label>
+                    <select id="alert-types" name="alert-types">
+                        <option value="sanitation">Sanitation</option>
+                        <option value="medicine">Medicine Management</option>
+                        <option value="waste">Waste Management</option>
+                        <option value="all">All Alerts</option>
+                    </select>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Binfinity | All rights reserved</p>
+            <nav class="footer-nav">
+                <a href="#">Dashboard</a> | 
+                <a href="#">Medicine Management</a> | 
+                <a href="#">Waste Management</a> | 
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.querySelector("form").addEventListener("submit", function(e) {
+            e.preventDefault(); // Prevent the form from actually submitting
+
+            // Show the success popup
+            const popup = document.getElementById("subscribe-popup");
+            popup.classList.remove("hidden");
+            popup.classList.add("show");
+
+            // Hide the popup after 3 seconds
+            setTimeout(() => {
+                popup.classList.remove("show");
+                popup.classList.add("hidden");
+            }, 3000);
+
+            // Optional: Clear the form fields
+            e.target.reset();
+        });
+    </script>
+
+</body>
+
+</html>
